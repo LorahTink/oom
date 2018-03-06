@@ -10,24 +10,12 @@ using System.Net;
 
 namespace Task2
 {
-
-
+    
     public class Pet
     {
-        private static int ratio = 7;
-        static void Main(string[] args)
-        {
-            Pet Hildy = new Pet("Hauskatze", "weiblich", "grantig, ready for Battle, Rustypyjamas", 1);
-            Pet Seppi = new Pet("Hauskatze", "maennlich", "schlaeft viel, macht nichts", 11);
-            Console.WriteLine(Hildy.Race);
-            Console.WriteLine(Seppi.Personality);
-            
-            Console.WriteLine(Seppi.UpdateAge(11,ratio)) ; ///Warum funktioniert Seppi.Age nicht?
-            
-            Console.Read();
-        }
-
+        private int ratio = 7;
        
+           
 
         /// <summary>
         /// Creates a new pet object.
@@ -61,17 +49,38 @@ namespace Task2
         public string Race{get;}     
         public string Sex { get; }
         public string Personality { get; }
-        public int Age { get; set; }
+        public int Age { get; private set; }
 
             
 
-        public int UpdateAge(int newAge, int ratio)
+        public void UpdateAge(int newAge, int ratio)
         {
             if (newAge < 0) throw new ArgumentException("Age must not be negative.", nameof(newAge));
-            newAge = newAge * ratio;
-            return newAge;
+            Age = newAge * 7;
+            
               }
+
+        override public string ToString()
+        {
+            return Race +" " + Sex +" " + Personality + " " + Age.ToString();
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Pet Hildy = new Pet("Hauskatze", "weiblich", "grantig, ready for Battle, Rustypyjamas", 1);
+            Pet Seppi = new Pet("Hauskatze", "maennlich", "schlaeft viel, macht nichts", 11);
+            Console.WriteLine(Hildy.ToString());
+           Console.WriteLine(Seppi.ToString());
+
+            ///  Console.WriteLine(Seppi.UpdateAge(11, ratio)); Warum funktioniert Seppi.Age nicht?
+
+            Console.Read();
+        }
     }
 }
+
 
 
