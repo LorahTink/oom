@@ -40,7 +40,7 @@ namespace Task2
            /* Pet Hildy = new Pet("Hauskatze", "weiblich", "grantig, ready for Battle, Rustypyjamas", 1);
             Pet Seppi = new Pet("Hauskatze", "maennlich", "schlaeft viel, macht nichts", 11);
             */
-            UpdateAge(age, ratio);
+            UpdateAge(age);
 
             
         }
@@ -53,10 +53,10 @@ namespace Task2
 
             
 
-        public void UpdateAge(int newAge, int ratio)
+        public void UpdateAge(int newAge)
         {
             if (newAge < 0) throw new ArgumentException("Age must not be negative.", nameof(newAge));
-            Age = newAge * 7;
+            Age = newAge * ratio;
             
               }
 
@@ -73,7 +73,9 @@ namespace Task2
             Pet Hildy = new Pet("Hauskatze", "weiblich", "grantig, ready for Battle, Rustypyjamas", 1);
             Pet Seppi = new Pet("Hauskatze", "maennlich", "schlaeft viel, macht nichts", 11);
             Console.WriteLine(Hildy.ToString());
-           Console.WriteLine(Seppi.ToString());
+            Console.WriteLine(Seppi.ToString());
+            Seppi.UpdateAge(15);
+            Console.WriteLine(Seppi.ToString());
 
             ///  Console.WriteLine(Seppi.UpdateAge(11, ratio)); Warum funktioniert Seppi.Age nicht?
 
