@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using System.Globalization;
 using System.Net;
 using NUnit.Framework;
+using Newtonsoft.Json;
+using System.IO;
 
-
-
-namespace Task2
+namespace Task4
 {
 
     public class Cat : Animal
@@ -47,16 +47,10 @@ namespace Task2
             UpdateAge(age);
             Description = description;
 
-            Cat Hildy = new Cat("Hauskatze", "weiblich", "grantig, ready for Battle",1,"Rustypyjamas");
-            Cat Seppi = new Cat("Hauskatze", "maennlich", "schlaeft viel", 11, "macht nichts");
-            Cat Isolde = new Cat("Hauskatze", "weiblich", "neugierig", 2, "macht auch nichts");
-            Cat Tristan = new Cat("Hauskatze", "maennlich", "einfaeltig", 9, "lieb");
-            Cat Garfield = new Cat("Hauskatze", "maennlich", "verfressen", 4, "liebt Lasagne");
-         
-
-
-
         }
+
+
+
 
         //Wie man von außen mit dem Zeug interagieren kann
         //Ich kann oben ja auch private setzen und wenn ich trotzdem damit interagieren möchte,
@@ -88,7 +82,7 @@ namespace Task2
         }
 
         public string Description { get; }
-        public int Age { get; private set; }
+        public int Age { get; set; }
 
 
         #endregion
@@ -155,6 +149,20 @@ namespace Task2
                 Console.WriteLine($"{x.Age} {x.Description}");
             }
 
+            var Hildy = new Cat("Perser", "female", "kaempferisch", 1, "Fleckerlteppich"); // Erstelle eine neue Katze
+            var Mittens = new Cat("Siam", "male", "nicht so kaempferisch", 1, "Tiger"); // Erstelle eine neue Katze
+
+            List<Cat> listCats = new List<Cat>(); // Erstelle eine Liste "listCats"
+            listCats.Add(Hildy); // Fuege das Objekt "Hildy" der Liste hinzu
+            listCats.Add(Mittens); //see above
+
+            string Cat_serial = JsonConvert.SerializeObject(listCats); // Serialisiere die Liste der Katzen zu einem String "Cat_Serial"
+
+            File.WriteAllText(@"C:\Users\Schumpi\oom\myfile.txt", Cat_serial); // Schreibt Cat_Serial String in ein text File im entsprechenden Ordner
+
+            Console.WriteLine(File.ReadAllText(@"C:\Users\Schumpi\oom\myfile.txt")); //Schreibe in die Konsole was aus dem File ausgelesen wird
+
+
         }
 
 
@@ -171,7 +179,10 @@ namespace Task2
 
         void UpdateAge(int newAge);
         ///man muss die Parameter, die übergeben werden, gleich dazu schreiben
+        ///
+
+
     }
+
+
 }
-
-

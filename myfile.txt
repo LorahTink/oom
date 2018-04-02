@@ -1,0 +1,1 @@
+[{"Race":"Perser","Sex":"female","Personality":"kaempferisch","Description":"Fleckerlteppich","Age":7},{"Race":"Siam","Sex":"male","Personality":"nicht so kaempferisch","Description":"Tiger","Age":7}]
