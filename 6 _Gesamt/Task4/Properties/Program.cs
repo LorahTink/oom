@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -63,14 +63,14 @@ namespace Task6
         public string Personality { get; }
 
 
-        
 
-        //Wenn diese Funktion aufgerufen wird, gibt sie die angeführten Strings unten zurück, mit Abstand
+
+
+
         override public string ToString()
         {
             return Race + " " + Sex + " " + Personality + " " + Age.ToString() + " " + Description;
         }
-
 
         #region Animal implementation
 
@@ -143,7 +143,7 @@ namespace Task6
 
             Animal[] Tiergruppe = new Animal[] { new Cat("Siamkatze", "männlich", "lieb", 3, "super fluffy duffy"), new Doge("Golden Retriever,", "Very good boy,", "So fluffy I'm gonna die,", 29, ""), };
 
-            // wir gehen mit dem foreach durch die Liste und geben entsprechend aus 
+
             Console.WriteLine("------------------------FOR EACH GROUP-----------------------------");
             foreach (var x in Tiergruppe)
             {
@@ -163,9 +163,9 @@ namespace Task6
             Console.WriteLine("------------------------SERIALISIERUNG-----------------------------");
             string Cat_serial = JsonConvert.SerializeObject(listCats); /// Serialisiere die Liste der Katzen zu einem String "Cat_Serial"
 
-            File.WriteAllText(@"D:\Downloads\catextract.txt", Cat_serial); // Schreibt Cat_Serial String in ein text File im entsprechenden Ordner
+            File.WriteAllText(@"C:\Users\Schumpi\Downloads\catextract.txt", Cat_serial); // Schreibt Cat_Serial String in ein text File im entsprechenden Ordner
 
-            Console.WriteLine(File.ReadAllText(@"D:\Downloads\catextract.txt")); //Schreibe in die Konsole was aus dem File ausgelesen wird
+            Console.WriteLine(File.ReadAllText(@"C:\Users\Schumpi\Downloads\catextract.txt")); //Schreibe in die Konsole was aus dem File ausgelesen wird
             Console.WriteLine("------------------------FOR EACH LIST-----------------------------");
 
             foreach (var x in listCats) Console.WriteLine(x); /// Alle Objekte durchlaufen und ausgeben
@@ -195,7 +195,7 @@ namespace Task6
         }
         public static async Task<string> DisplayFileContentAsync()
         {
-            return await FileHandlerAsync.ReadAllLinesAsync(@"D:\Downloads\catextract.txt");
+            return await FileHandlerAsync.ReadAllLinesAsync(@"C:\Users\Schumpi\Downloads\catextract.txt");
         }
 
     }
